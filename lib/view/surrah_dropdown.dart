@@ -4,6 +4,8 @@ import '../controllers/surrah_controller.dart';
 import '../data/models/surrah_model.dart';
 
 class SurahDropdown extends StatelessWidget {
+  const SurahDropdown({super.key});
+
   @override
   Widget build(BuildContext context) {
     final SurahController controller = Get.find();
@@ -13,7 +15,7 @@ class SurahDropdown extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Search by Surah Name",
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.search),
@@ -32,13 +34,13 @@ class SurahDropdown extends StatelessWidget {
             items: controller.filteredSurahList.map((surah) {
               return DropdownMenuItem(
                 value: surah,
-                child: Text("${surah.englishName ?? 'Unknown'}"),
+                child: Text(surah.englishName ?? 'Unknown'),
               );
             }).toList(),
             onChanged: (value) {
               if (value != null) controller.selectSurah(value);
             },
-            hint: Text("Select a Surah"),
+            hint: const Text("Select a Surah"),
           );
         }),
       ],
